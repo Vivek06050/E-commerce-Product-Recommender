@@ -7,10 +7,10 @@
 This project is a **E-commerce product recommendation system** built to demonstrate **clear recommendation logic, clean backend design, and explainable AI usage**.
 
 The system uses:
+
 - User interactions (view & favourite)
 - Content-based recommendation using **product tags**
 - LLM (Perplexity / PPX) **only for explanation**, not for decision making
-
 
 ---
 
@@ -26,7 +26,7 @@ The system uses:
 
 ---
 
-## 🧠 Recommendation Logic 
+## 🧠 Recommendation Logic
 
 ### Assumptions
 
@@ -38,34 +38,40 @@ The system uses:
 
 ### Signals Used
 
-View  
+**View**  
 → Indicates interest (+1 weight)
 
-Favourite  
+**Favourite**  
 → Indicates stronger interest (+3 weight)
 
-Unfavourite  
-→ Removes favourite signal 
+**Unfavourite**  
+→ Removes favourite signal
 
-Product Tags  
+**Product Tags**  
 → Used to compute similarity between products
 
 ---
 
-### How Recommendations Work 
+### How Recommendations Work
 
-1. Each product has **predefined semantic tags**, for example:  
-   men, tshirt, casual, cotton
+1. Each product has **predefined semantic tags**, for example:
+
+```text
+men, tshirt, casual, cotton
+```
 
 2. When the user:
    - views a product → its tags add +1
    - favourites a product → its tags add +3
 
-3. A **user interest profile** is built dynamically at runtime, e.g.  
-   casual: 5  
-   men: 4  
-   tshirt: 4  
-   electronics: 2  
+3. A **user interest profile** is built dynamically at runtime, for example:
+
+```text
+casual: 5
+men: 4
+tshirt: 4
+electronics: 2
+```
 
 4. All products are scored based on **tag overlap** with this profile.
 
@@ -75,43 +81,52 @@ Already interacted products are allowed to appear if they naturally rank high.
 
 ---
 
-
 ## 🤖 LLM-Based Explanations
 
 The recommendation engine decides **what to recommend**.  
 The LLM is used **only to explain why**.
 
 Example explanation:
+
+```text
 Recommended because it matches the casual clothing items you recently viewed.
+```
 
 ---
-
 
 ## ⚙️ Installation & Setup (Local)
 
 ### Clone Repository
 
-git clone <repository-url>  
-cd project-root  
+```bash
+git clone <repository-url>
+cd project-root
+```
 
 ---
 
 ### Backend Setup
 
-cd backend  
-npm install  
+```bash
+cd backend
+npm install
+```
 
 Create a `.env` file:
 
-MONGO_URI=your_mongodb_atlas_connection_string  
-PORT=5000  
-PPX_API_KEY=your_perplexity_api_key  
+```env
+MONGO_URI=your_mongodb_atlas_connection_string
+PORT=5000
+PPX_API_KEY=your_perplexity_api_key
+```
 
 ---
 
 ### Seed Product Data
 
-node seed/seedProducts.js  
+```bash
+node seed/seedProducts.js
+```
 
 This inserts **40 tagged products** into MongoDB.
 
@@ -119,65 +134,94 @@ This inserts **40 tagged products** into MongoDB.
 
 ### Start Backend
 
-npm start  
+```bash
+npm start
+```
 
-Backend runs at:  
-http://localhost:5000  
+Backend runs at:
+
+```text
+http://localhost:5000
+```
 
 ---
 
 ### Frontend Setup
 
-cd frontend  
-npm install  
-npm run dev  
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-Frontend runs at:  
-http://localhost:5173  
+Frontend runs at:
+
+```text
+http://localhost:5173
+```
 
 ---
-
 
 ## 🔌 API Endpoints
 
 ### Get All Products
+
+```text
 GET /api/products
+```
 
 ---
 
 ### Record Product View
+
+```text
 POST /api/interactions/view
+```
 
 Body:
-userId  
-productId  
+
+```text
+userId
+productId
+```
 
 ---
 
 ### Toggle Favourite / Unfavourite
+
+```text
 POST /api/interactions/favourite
+```
 
 Body:
-userId  
-productId  
+
+```text
+userId
+productId
+```
 
 ---
 
 ### Get Recommendations
+
+```text
 GET /api/recommendations/:userId
+```
 
 Response structure:
-recommendations  
-- product  
+
+```text
+recommendations
+- product
 - reason (LLM explanation or fallback)
+```
 
 ---
-
 
 ## 🏁 Conclusion
 
 This project demonstrates:
+
 - Practical recommendation system thinking
 - Explainable AI usage
 - Clean backend architecture
-
