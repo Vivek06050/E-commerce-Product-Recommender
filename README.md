@@ -13,6 +13,9 @@ The system uses:
 - LLM (Perplexity / PPX) **only for explanation**, not for decision making
 
 ---
+# 🌐 Live URL
+https://e-commerce-product-recommender-1.onrender.com/
+
 
 ## 🎯 Key Features
 
