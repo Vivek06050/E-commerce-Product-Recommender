@@ -13,6 +13,22 @@ The system uses:
 - LLM (Perplexity / PPX) **only for explanation**, not for decision making
 
 ---
+
+# 🛠️ Recommendation System Architecture & Flow
+https://www.canva.com/design/DAG3GXhlWcw/tNCy7STU2k--IGotIljb6g/edit?utm_content=DAG3GXhlWcw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+This document illustrates:
+
+Backend API flow
+
+User interaction tracking
+
+Tag-based scoring mechanism
+
+Recommendation ranking process
+
+LLM explanation integration
+
 # 🌐 Live URL
 https://e-commerce-product-recommender-1.onrender.com/
 
