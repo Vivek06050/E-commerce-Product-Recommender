@@ -118,7 +118,7 @@ Recommended because it matches the casual clothing items you recently viewed.
 ### Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Vivek06050/E-commerce-Product-Recommender/
 cd project-root
 ```
 
